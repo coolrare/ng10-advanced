@@ -23,7 +23,7 @@ export class ColorComponent implements OnInit {
       }
     });
 
-    this.type = +this.route.snapshot.queryParamMap.get('name');
+    this.name = this.route.snapshot.queryParamMap.get('name');
 
     this.route.queryParamMap.subscribe(params => {
       console.log(params.get('name'));
