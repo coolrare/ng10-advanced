@@ -19,11 +19,32 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0" />
 
+    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <a class="nav-link" routerLink="/">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Home</span></a
+      >
+    </li>
+
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-      <a class="nav-link" href="index.html">
+    <li class="nav-item" routerLinkActive="active">
+      <a class="nav-link" routerLink="/dashboard">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a
+      >
+    </li>
+
+    <li class="nav-item" routerLinkActive="active">
+      <a class="nav-link" routerLink="/page1">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Page 1</span></a
+      >
+    </li>
+
+    <li class="nav-item" routerLinkActive="active">
+      <a class="nav-link" routerLink="/page2">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Page 2</span></a
       >
     </li>
 
