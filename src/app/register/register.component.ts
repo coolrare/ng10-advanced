@@ -91,4 +91,11 @@ export class RegisterComponent implements OnInit, OnDestroy {
     return this.form.get(name) as FormArray;
   }
 
+  addNewEmail(): void {
+    const emails = this.fa('emails');
+    emails.push(this.fb.control('', {
+      validators: [Validators.required, Validators.email]
+    }));
+  }
+
 }
