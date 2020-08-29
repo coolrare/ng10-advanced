@@ -74,12 +74,20 @@ fc('firstName').errors = {{ fc('firstName').errors | json }}</pre>
                          placeholder="Password"
                          [class.is-invalid]="isInvalid('password')"
                          formControlName="password">
+                  <ul *ngIf="fc('password').invalid">
+                    <li *ngIf="fc('password').errors.required">請輸入密碼</li>
+                    <li *ngIf="fc('password').errors.comparePassword">密碼輸入不一致</li>
+                  </ul>
                 </div>
                 <div class="col-sm-6">
                   <input type="password" class="form-control form-control-user"
                          placeholder="Repeat Password"
                          [class.is-invalid]="isInvalid('repeatPassword')"
                          formControlName="repeatPassword">
+                  <ul *ngIf="fc('repeatPassword').invalid">
+                    <li *ngIf="fc('repeatPassword').errors.required">請輸入密碼</li>
+                    <li *ngIf="fc('repeatPassword').errors.comparePassword">密碼輸入不一致</li>
+                  </ul>
                 </div>
               </div>
               <button type="submit" class="btn btn-primary btn-user btn-block"> Register Account </button>
