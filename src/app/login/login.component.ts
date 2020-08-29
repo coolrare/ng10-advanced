@@ -10,8 +10,8 @@ import { NgForm } from '@angular/forms';
 export class LoginComponent implements OnInit, OnDestroy {
 
   data: any = {
-    email: 'doggy.huang@gmail.com',
-    password: '123123',
+    email: '',
+    password: '',
     rememberMe: true
   };
 
