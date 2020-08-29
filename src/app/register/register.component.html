@@ -9,12 +9,41 @@
             <div class="text-center">
               <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
             </div>
+<pre>data = {{ data | json }}
+form.value = {{ form.value | json }}
+form.status = {{ form.status }}
+form.pristine = {{ form.pristine }}
+form.dirty = {{ form.dirty }}
+form.touched = {{ form.touched }}
+form.untouched = {{ form.untouched }}
+form.enabled = {{ form.enabled }}
+form.disabled = {{ form.disabled }}
+form.valid = {{ form.valid }}
+form.invalid = {{ form.invalid }}
+form.errors = {{ form.errors | json }}</pre>
             <form class="user" [formGroup]="form" (ngSubmit)="doSubmit()">
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <input type="text" class="form-control form-control-user"
                          placeholder="First Name"
+                         [class.is-invalid]="fc('firstName').dirty && fc('firstName').invalid"
                          formControlName="firstName">
+                    <ul [class.invalid-feedback]="fc('firstName').touched && fc('firstName').invalid"
+                      *ngIf="fc('firstName').touched && fc('firstName').invalid">
+                      <li *ngIf="fc('firstName').errors.required">請輸入電子郵件信箱</li>
+                      <li *ngIf="fc('firstName').errors.email">請輸入合法的 E-mail 格式</li>
+                    </ul>
+<pre>fc('firstName').value = {{ fc('firstName').value }}
+fc('firstName').status = {{ fc('firstName').status }}
+fc('firstName').pristine = {{ fc('firstName').pristine }}
+fc('firstName').dirty = {{ fc('firstName').dirty }}
+fc('firstName').touched = {{ fc('firstName').touched }}
+fc('firstName').untouched = {{ fc('firstName').untouched }}
+fc('firstName').enabled = {{ fc('firstName').enabled }}
+fc('firstName').disabled = {{ fc('firstName').disabled }}
+fc('firstName').valid = {{ fc('firstName').valid }}
+fc('firstName').invalid = {{ fc('firstName').invalid }}
+fc('firstName').errors = {{ fc('firstName').errors | json }}</pre>
                 </div>
                 <div class="col-sm-6">
                   <input type="text" class="form-control form-control-user"

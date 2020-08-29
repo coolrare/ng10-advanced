@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   templateUrl: './register.component.html',
@@ -51,6 +51,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
       case 'DISABLED':
         break;
     }
+  }
+
+  fc(name: string): FormControl {
+    return this.form.get(name) as FormControl;
   }
 
 }
