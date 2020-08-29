@@ -48,11 +48,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
       repeatPassword: this.fb.control('', {
         validators: [Validators.required, Validators.minLength(6)]
       })
-    }, {
-      validators: [ComparePasswords('password', 'repeatPassword')]
     });
 
-    // this.form.setValidators(ComparePasswords('password', 'repeatPassword'));
+    this.form.setValidators(ComparePasswords('password', 'repeatPassword'));
 
     for (const _ of this.data.emails) {
       this.addNewEmail();
