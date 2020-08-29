@@ -83,6 +83,7 @@ fc('firstName').errors = {{ fc('firstName').errors | json }}</pre>
                 </div>
               </div>
               <button type="submit" class="btn btn-primary btn-user btn-block"> Register Account </button>
+              <button type="button" class="btn btn-danger btn-user btn-block" (click)="doReset()"> Reset Form </button>
               <hr>
               <button type="button" class="btn btn-google btn-user btn-block">
                 <i class="fab fa-google fa-fw"></i> Register with Google </button>
