@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   templateUrl: './register.component.html',
@@ -22,11 +22,11 @@ export class RegisterComponent implements OnInit, OnDestroy {
     document.body.className = 'bg-gradient-primary';
 
     this.form = this.fb.group({
-      firstName: 'Will',
-      lastName: 'Huang',
-      email: 'doggy.huang@gmail.com',
-      password: '',
-      repeatPassword: ''
+      firstName: ['Will', [Validators.required]],
+      lastName: ['Huang', [Validators.required]],
+      email: ['doggy.huang@gmail.com', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      repeatPassword: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
