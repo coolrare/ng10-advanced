@@ -92,10 +92,19 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   addNewEmail(): void {
-    const emails = this.fa('emails');
-    emails.push(this.fb.control('', {
-      validators: [Validators.required, Validators.email]
-    }));
+    const email = this.fb.control('', {
+      updateOn: 'blur'
+    });
+
+    email.setValidators([
+      Validators.required,
+      Validators.email
+    ]);
+
+    // 設定欄位為 DISABLED 狀態
+    // email.disable();
+
+    this.fa('emails').push(email);
   }
 
 }
