@@ -53,12 +53,19 @@ fc('firstName').errors = {{ fc('firstName').errors | json }}</pre>
                          formControlName="lastName">
                 </div>
               </div>
-              <div class="form-group">
-                <input type="email" class="form-control form-control-user"
-                       placeholder="Email Address"
-                       [class.is-invalid]="isInvalid('email')"
-                       formControlName="email">
-              </div>
+
+              <ng-container formArrayName="emails">
+
+                <div class="form-group"
+                     *ngFor="let ctl of fa('emails').controls; let i=index">
+                  <input type="email" class="form-control form-control-user"
+                  placeholder="Email Address"
+                  [class.is-invalid]="ctl.invalid"
+                  [formControlName]="i">
+                </div>
+
+              </ng-container>
+
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <input type="password" class="form-control form-control-user"

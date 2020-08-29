@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 
 @Component({
   templateUrl: './register.component.html',
@@ -37,9 +37,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
       lastName: this.fb.control('Huang', {
         validators: [Validators.required, Validators.email]
       }),
-      email: this.fb.control('doggy.huang@gmail.com', {
-        validators: [Validators.required]
-      }),
+      emails: this.fb.array([
+        this.fb.control('doggy.huang@gmail.com', {
+          validators: [Validators.required]
+        }),
+        this.fb.control('abc@example.com', {
+          validators: [Validators.required]
+        }),
+      ]),
       password: this.fb.control('', {
         validators: [Validators.required, Validators.minLength(6)]
       }),
@@ -80,6 +85,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   fc(name: string): FormControl {
     return this.form.get(name) as FormControl;
+  }
+
+  fa(name: string): FormArray {
+    return this.form.get(name) as FormArray;
   }
 
 }
