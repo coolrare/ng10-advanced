@@ -15,15 +15,18 @@
                 <form class="user">
                   <div class="form-group">
                     <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                           aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                           aria-describedby="emailHelp" placeholder="Enter Email Address..."
+                           [(ngModel)]="data.email" name="email">
                   </div>
                   <div class="form-group">
                     <input type="password" class="form-control form-control-user" id="exampleInputPassword"
-                           placeholder="Password">
+                           placeholder="Password"
+                           [(ngModel)]="data.password" name="password">
                   </div>
                   <div class="form-group">
                     <div class="custom-control custom-checkbox small">
-                      <input type="checkbox" class="custom-control-input" id="customCheck">
+                      <input type="checkbox" class="custom-control-input" id="customCheck"
+                        [(ngModel)]="data.rememberMe" name="rememberMe">
                       <label class="custom-control-label" for="customCheck">Remember Me</label>
                     </div>
                   </div>

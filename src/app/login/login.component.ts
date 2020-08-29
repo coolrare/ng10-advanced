@@ -1,5 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   templateUrl: './login.component.html',
@@ -7,7 +8,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  data: any = {
+    email: 'doggy.huang@gmail.com',
+    password: '123123',
+    rememberMe: true
+  };
+
+  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit(): void {
     document.body.className = 'bg-gradient-primary';
@@ -21,6 +28,11 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     document.body.className = '';
+  }
+
+  doSubmit(): void {
+    // this.http.post('/save', this.data).subscribe(result => {
+    // });
   }
 
 }
