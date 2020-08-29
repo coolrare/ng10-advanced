@@ -12,11 +12,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     document.body.className = 'bg-gradient-primary';
 
-    setTimeout(() => {
-      localStorage.setItem('token', 'JWT');
-      const ret = this.route.snapshot.queryParamMap.get('ret');
-      this.router.navigateByUrl(ret);
-    }, 3000);
+    // setTimeout(() => {
+    //   localStorage.setItem('token', 'JWT');
+    //   const ret = this.route.snapshot.queryParamMap.get('ret');
+    //   this.router.navigateByUrl(ret);
+    // }, 3000);
   }
 
   ngOnDestroy(): void {
