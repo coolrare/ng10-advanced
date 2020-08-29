@@ -13,6 +13,7 @@ import { PathNotFoundComponent } from './path-not-found/path-not-found.component
 import { ColorComponent } from './utilities/color/color.component';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LoginComponent } from './login/login.component';
     PathNotFoundComponent,
     ColorComponent,
     LayoutComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
