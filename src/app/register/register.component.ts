@@ -21,13 +21,33 @@ export class RegisterComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     document.body.className = 'bg-gradient-primary';
 
+    // this.form = this.fb.group({
+    //   firstName: ['Will', [Validators.required]],
+    //   lastName: ['Huang', [Validators.required]],
+    //   email: ['doggy.huang@gmail.com', [Validators.required, Validators.email]],
+    //   password: ['', [Validators.required, Validators.minLength(6)]],
+    //   repeatPassword: ['', [Validators.required, Validators.minLength(6)]]
+    // });
+
     this.form = this.fb.group({
-      firstName: ['Will', [Validators.required]],
-      lastName: ['Huang', [Validators.required]],
-      email: ['doggy.huang@gmail.com', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      repeatPassword: ['', [Validators.required, Validators.minLength(6)]]
+      firstName: this.fb.control('Will', {
+        validators: [Validators.required],
+        updateOn: 'blur'
+      }),
+      lastName: this.fb.control('Huang', {
+        validators: [Validators.required, Validators.email]
+      }),
+      email: this.fb.control('doggy.huang@gmail.com', {
+        validators: [Validators.required]
+      }),
+      password: this.fb.control('', {
+        validators: [Validators.required, Validators.minLength(6)]
+      }),
+      repeatPassword: this.fb.control('', {
+        validators: [Validators.required, Validators.minLength(6)]
+      })
     });
+
   }
 
   ngOnDestroy(): void {
@@ -55,7 +75,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   isInvalid(name: string): boolean {
     return (this.fc(name).touched || this.fc(name).dirty)
-           && this.fc(name).invalid;
+      && this.fc(name).invalid;
   }
 
   fc(name: string): FormControl {
