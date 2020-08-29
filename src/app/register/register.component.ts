@@ -39,16 +39,20 @@ export class RegisterComponent implements OnInit, OnDestroy {
         updateOn: 'blur'
       }),
       lastName: this.fb.control('', {
-        validators: [Validators.required, Validators.email]
+        validators: [Validators.required]
       }),
       emails: this.fb.array([]),
       password: this.fb.control('', {
-        validators: [Validators.required, Validators.minLength(6), ComparePasswords('password', 'repeatPassword')]
+        validators: [Validators.required, Validators.minLength(6)]
       }),
       repeatPassword: this.fb.control('', {
-        validators: [Validators.required, Validators.minLength(6), ComparePasswords('password', 'repeatPassword')]
+        validators: [Validators.required, Validators.minLength(6)]
       })
+    }, {
+      validators: [ComparePasswords('password', 'repeatPassword')]
     });
+
+    // this.form.setValidators(ComparePasswords('password', 'repeatPassword'));
 
     for (const _ of this.data.emails) {
       this.addNewEmail();
@@ -116,28 +120,18 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
 }
 
-
 function ComparePasswords(c1: string, c2: string): ValidatorFn {
-  return (control: FormControl): ValidationErrors => {
-    const fg = control.parent as FormGroup;
-    if (fg) {
-      const p1 = fg.get(c1);
-      const p2 = fg.get(c2);
+  return (fg: FormGroup): ValidationErrors => {
+    const p1 = fg.get(c1);
+    const p2 = fg.get(c2);
 
-      if (p1 === control) {
-        p2.updateValueAndValidity();
-        return null;
-      }
-
-      if (p1.value === p2.value) {
-        return null;
-      } else {
-        return {
-          comparePassword: true
-        };
-      }
+    if (p1.value === p2.value) {
+      return null;
+    } else {
+      return {
+        comparePassword: true
+      };
     }
-    return null;
   };
 }
 
