@@ -12,16 +12,27 @@
                 <div class="text-center">
                   <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                 </div>
-                <pre>{{ data | json }}</pre>
-                <form class="user">
+<pre>data = {{ data | json }}
+form.value = {{ form.value | json }}
+form.submitted = {{ form.submitted }}
+form.status = {{ form.status }}
+form.pristine = {{ form.pristine }}
+form.dirty = {{ form.dirty }}
+form.touched = {{ form.touched }}
+form.untouched = {{ form.untouched }}
+form.enabled = {{ form.enabled }}
+form.disabled = {{ form.disabled }}
+form.valid = {{ form.valid }}
+form.invalid = {{ form.invalid }}
+form.errors = {{ form.errors | json }}</pre>
+                <form class="user" #form="ngForm" (ngSubmit)="doSubmit(form)">
                   <div class="form-group">
                     <input type="email" class="form-control form-control-user" id="exampleInputEmail"
                            aria-describedby="emailHelp" placeholder="Enter Email Address..."
                            [(ngModel)]="data.email" name="email"
                            #mEmail="ngModel"
-                           disabled
                            required email>
-                    <ul *ngIf="mEmail.invalid">
+                    <ul *ngIf="form.submitted && mEmail.invalid">
                       <li *ngIf="mEmail.errors.required">請輸入電子郵件信箱</li>
                       <li *ngIf="mEmail.errors.email">請輸入合法的 E-mail 格式</li>
                     </ul>
@@ -51,7 +62,7 @@ mEmail.errors = {{ mEmail.errors | json }}</pre>
                       <label class="custom-control-label" for="customCheck">Remember Me</label>
                     </div>
                   </div>
-                  <a href="index.html" class="btn btn-primary btn-user btn-block"> Login </a>
+                  <button type="submit" class="btn btn-primary btn-user btn-block"> Login </button>
                   <hr>
                   <a href="index.html" class="btn btn-google btn-user btn-block">
                     <i class="fab fa-google fa-fw"></i> Login with Google </a>

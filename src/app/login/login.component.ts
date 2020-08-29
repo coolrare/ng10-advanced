@@ -1,6 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { NgForm } from '@angular/forms';
 
 @Component({
   templateUrl: './login.component.html',
@@ -30,9 +31,22 @@ export class LoginComponent implements OnInit, OnDestroy {
     document.body.className = '';
   }
 
-  doSubmit(): void {
-    // this.http.post('/save', this.data).subscribe(result => {
-    // });
+  doSubmit(form: NgForm): void {
+    switch (form.status) {
+      case 'VALID':
+        console.log(form.value);
+        // this.http.post('/save', this.data).subscribe(result => {
+        // });
+        break;
+      case 'INVALID':
+        alert('表單驗證失敗，無法送出表單!');
+        break;
+      case 'PENDING':
+        alert('表單驗證進行中，請稍後再試...');
+        break;
+      case 'DISABLED':
+        break;
+    }
   }
 
 }
