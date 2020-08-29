@@ -27,10 +27,10 @@ f.submitted = {{ f.submitted }}</pre>
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <input type="text" class="form-control form-control-user"
                          placeholder="First Name"
-                         [class.is-invalid]="fc('firstName').dirty && fc('firstName').invalid"
+                         [class.is-invalid]="isInvalid('firstName')"
                          formControlName="firstName">
-                    <ul [class.invalid-feedback]="fc('firstName').touched && fc('firstName').invalid"
-                      *ngIf="fc('firstName').touched && fc('firstName').invalid">
+                    <ul [class.invalid-feedback]="isInvalid('firstName')"
+                      *ngIf="isInvalid('firstName')">
                       <li *ngIf="fc('firstName').errors.required">請輸入電子郵件信箱</li>
                       <li *ngIf="fc('firstName').errors.email">請輸入合法的 E-mail 格式</li>
                     </ul>
@@ -49,27 +49,27 @@ fc('firstName').errors = {{ fc('firstName').errors | json }}</pre>
                 <div class="col-sm-6">
                   <input type="text" class="form-control form-control-user"
                          placeholder="Last Name"
-                         [class.is-invalid]="fc('lastName').dirty && fc('lastName').invalid"
+                         [class.is-invalid]="isInvalid('lastName')"
                          formControlName="lastName">
                 </div>
               </div>
               <div class="form-group">
                 <input type="email" class="form-control form-control-user"
                        placeholder="Email Address"
-                       [class.is-invalid]="fc('email').dirty && fc('email').invalid"
+                       [class.is-invalid]="isInvalid('email')"
                        formControlName="email">
               </div>
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <input type="password" class="form-control form-control-user"
                          placeholder="Password"
-                         [class.is-invalid]="fc('password').dirty && fc('password').invalid"
+                         [class.is-invalid]="isInvalid('password')"
                          formControlName="password">
                 </div>
                 <div class="col-sm-6">
                   <input type="password" class="form-control form-control-user"
                          placeholder="Repeat Password"
-                         [class.is-invalid]="fc('repeatPassword').dirty && fc('repeatPassword').invalid"
+                         [class.is-invalid]="isInvalid('repeatPassword')"
                          formControlName="repeatPassword">
                 </div>
               </div>
